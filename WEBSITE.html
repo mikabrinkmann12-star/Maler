@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malerbetrieb Ralf Brinkmann — Maler in Saterland | So bunt wie das Leben!</title>
+  <meta name="description" content="Malerbetrieb Ralf Brinkmann aus Saterland/Scharrel. Malerarbeiten innen & außen, Fassaden, Holz- & Bautenschutz, Farb- und Raumgestaltung. Qualität & Sauberkeit seit 2014." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage:     '#CAD18B',   // Logo-Grün (Primär)
+            sagedark: '#B1BB63',   // Hover
+            sagesoft: '#F2F4E2',   // helle Fläche
+            ink:      '#2D312E',   // Anthrazit (Text/Kontrast)
+            ink2:     '#4B524C',
+            line:     '#E7E8DD',
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body:    ['Open Sans', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { font-family: 'Open Sans', sans-serif; background: #FFFFFF; color: #2D312E; }
+    .font-heading { font-family: 'Poppins', sans-serif; }
+    section { scroll-margin-top: 96px; }
+
+    /* ---- Scroll reveal ---- */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; } .d4 { transition-delay: .32s; }
+
+    /* ---- Header (groß oben, schrumpft beim Scrollen) ---- */
+    .site-header { transition: padding .35s cubic-bezier(.4,0,.2,1), box-shadow .3s ease, background-color .3s ease; padding-top: 1.4rem; padding-bottom: 1.4rem; }
+    .site-header.scrolled { padding-top: .5rem; padding-bottom: .5rem; box-shadow: 0 8px 30px rgba(45,49,46,.08); }
+    .site-logo { height: 4.75rem; width: auto; transition: height .35s cubic-bezier(.4,0,.2,1); }
+    .site-header.scrolled .site-logo { height: 3rem; }
+    @media (min-width: 640px) {
+      .site-header { padding-top: 1.75rem; padding-bottom: 1.75rem; }
+      .site-logo { height: 7rem; }
+      .site-header.scrolled { padding-top: .55rem; padding-bottom: .55rem; }
+      .site-header.scrolled .site-logo { height: 3.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .site-header, .site-logo { transition: none; }
+    }
+    .navlink { position: relative; }
+    .navlink::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:#CAD18B; transition: width .3s ease; }
+    .navlink:hover::after, .navlink.active::after { width:100%; }
+
+    /* ---- Mobile menu ---- */
+    .mobile-menu { transition: transform .4s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
+    .mobile-menu.hidden-menu { transform: translateX(100%); opacity:0; pointer-events:none; }
+
+    /* ---- Accordion (Leistungen) ---- */
+    .acc-panel { max-height: 0; overflow: hidden; transition: max-height .4s ease, opacity .3s ease; opacity: 0; }
+    .acc-item.open .acc-panel { max-height: 160px; opacity: 1; }
+    .acc-plus { transition: transform .35s cubic-bezier(.4,0,.2,1), background-color .25s ease, color .25s ease; }
+    .acc-item.open .acc-plus { transform: rotate(135deg); background:#CAD18B; color:#2D312E; }
+    .acc-trigger:hover .acc-plus { transform: scale(1.12) rotate(90deg); }
+    .acc-item.open .acc-trigger:hover .acc-plus { transform: scale(1.12) rotate(135deg); }
+
+    /* ---- Gallery ---- */
+    .gal-item img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .gal-item:hover img { transform: scale(1.08); }
+
+    /* ---- Chatbot ---- */
+    .chat-panel { transform-origin: bottom right; transition: transform .35s cubic-bezier(.34,1.4,.6,1), opacity .3s ease; }
+    .chat-panel.closed { transform: scale(.6) translateY(20px); opacity:0; pointer-events:none; }
+    @keyframes typing { 0%,60%,100%{transform:translateY(0);opacity:.4} 30%{transform:translateY(-4px);opacity:1} }
+    .dot { animation: typing 1.2s infinite; }
+    .dot:nth-child(2){animation-delay:.15s} .dot:nth-child(3){animation-delay:.3s}
+    @keyframes pulse-ring { 0%{transform:scale(.9);opacity:.7} 70%{transform:scale(1.5);opacity:0} 100%{opacity:0} }
+    .pulse-ring { animation: pulse-ring 2.4s ease-out infinite; }
+
+    /* ---- Platz für Sticky-CTA auf Mobil ---- */
+    @media (max-width: 1023px) { body { padding-bottom: 4.25rem; } }
+
+    /* ---- Karten-Micro-Interaction (dezent) ---- */
+    .svc-card { transition: transform .3s ease, box-shadow .3s ease; }
+    .svc-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(45,49,46,.10); }
+
+    /* ---- Mehr Bewegung (dezent) ---- */
+    @keyframes floaty { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+    .floaty { animation: floaty 6s ease-in-out infinite; }
+
+    @keyframes blobDrift { 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(22px,16px) scale(1.1); } }
+    .blob-anim { animation: blobDrift 16s ease-in-out infinite; }
+
+    /* Marken-/Partner-Laufband */
+    .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .marquee-track { display: flex; gap: .75rem; width: max-content; animation: marquee 42s linear infinite; }
+    .marquee-track.rev { animation-direction: reverse; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* Vorher/Nachher-Wisch (Reel) */
+    .ba-before { overflow: hidden; clip-path: inset(0 0 0 0); animation: baWipe 7s cubic-bezier(.65,0,.35,1) infinite; }
+    .ba-divider { position: absolute; top: 0; bottom: 0; left: 100%; width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,.45); animation: baLine 7s cubic-bezier(.65,0,.35,1) infinite; }
+    .ba-divider::after { content: '⟷'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: grid; place-items: center; width: 32px; height: 32px; font-size: 14px; color: #2D312E; border-radius: 9999px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+    @keyframes baWipe { 0%,14% { clip-path: inset(0 0 0 0); } 45%,57% { clip-path: inset(0 100% 0 0); } 90%,100% { clip-path: inset(0 0 0 0); } }
+    @keyframes baLine { 0%,14% { left: 100%; } 45%,57% { left: 0%; } 90%,100% { left: 100%; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity:1!important; transform:none!important; transition:none!important; }
+      .pulse-ring, .dot, .floaty, .blob-anim { animation: none!important; }
+      html { scroll-behavior:auto; }
+      .marquee { -webkit-mask-image:none; mask-image:none; }
+      .marquee-track { animation:none!important; flex-wrap:wrap; width:auto; }
+      .marquee-track .mq-dup { display:none; }
+      .ba-before { animation:none!important; clip-path: inset(0 100% 0 0); }
+      .ba-divider { display:none; }
+    }
+
+    /* ========================= INTRO: FARBSPRITZER ========================= */
+    #intro {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #FFFFFF;
+      display: grid; place-items: center;
+      overflow: hidden;
+      opacity: 1;
+    }
+    #intro.intro--out {
+      opacity: 0;
+      transition: opacity .7s ease;
+      pointer-events: none;
+    }
+    .intro-stage {
+      position: relative;
+      width: 1px; height: 1px;       /* echter Mittelpunkt für die Splitter */
+    }
+    /* Einzelne Farbspritzer-Splitter */
+    .frag {
+      position: absolute; left: 0; top: 0;
+      width: var(--sz); height: var(--sz);
+      margin-left: calc(var(--sz) / -2);
+      margin-top: calc(var(--sz) / -2);
+      background: var(--col, #CAD18B);
+      border-radius: 48% 52% 55% 45% / 50% 47% 53% 50%;
+      transform: scale(0);
+      opacity: 0;
+      will-change: transform, opacity;
+      animation: frag-burst 2.6s cubic-bezier(.22,.61,.36,1) forwards;
+      animation-delay: var(--d, 0s);
+    }
+    @keyframes frag-burst {
+      0%   { transform: translate(0,0) scale(0) rotate(0deg); opacity: 0; }
+      14%  { transform: translate(0,0) scale(1) rotate(8deg);  opacity: 1; }   /* Aufprall: Spritzer entsteht */
+      42%  { transform: translate(0,0) scale(1) rotate(8deg);  opacity: 1; }   /* kurz halten */
+      100% { transform: translate(var(--tx), var(--ty)) scale(.25) rotate(var(--rot)); opacity: 0; } /* zerspringt nach außen */
+    }
+    /* BRINKMANN tritt langsam in Schwarz hervor */
+    .intro-word {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -46%);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      letter-spacing: .14em;
+      color: #2D312E;
+      white-space: nowrap;
+      font-size: clamp(1.9rem, 8vw, 5rem);
+      opacity: 0;
+      animation: word-reveal 1.6s ease forwards;
+      animation-delay: 1.05s;
+    }
+    @keyframes word-reveal {
+      0%   { opacity: 0; transform: translate(-50%, -40%); filter: blur(8px); letter-spacing: .32em; }
+      100% { opacity: 1; transform: translate(-50%, -46%); filter: blur(0);   letter-spacing: .14em; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #intro { display: none !important; }
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-sage selection:text-ink">
+
+  <!-- ========================= INTRO: FARBSPRITZER ========================= -->
+  <div id="intro" aria-hidden="true">
+    <div class="intro-stage" id="introStage"></div>
+    <div class="intro-word">BRINKMANN</div>
+  </div>
+  <script>
+    (function () {
+      var intro = document.getElementById('intro');
+      if (!intro) return;
+      // Reduzierte Bewegung: Intro direkt überspringen
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        intro.parentNode && intro.parentNode.removeChild(intro);
+        return;
+      }
+      // Scrollen während des Intros sperren
+      var prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      // Farbspritzer-Splitter erzeugen (dichte Mitte + weit fliegende Tropfen)
+      var stage = document.getElementById('introStage');
+      var COLORS = ['#CAD18B', '#B1BB63', '#CAD18B', '#D7DDA3'];
+      var COUNT = 26;
+      for (var i = 0; i < COUNT; i++) {
+        var f = document.createElement('span');
+        f.className = 'frag';
+        var ang = Math.random() * Math.PI * 2;
+        // innere Splitter bleiben näher, äußere fliegen weiter -> Spritzer-Optik
+        var dist = (i < 8 ? 40 + Math.random() * 70 : 140 + Math.random() * 220);
+        var tx = Math.cos(ang) * dist;
+        var ty = Math.sin(ang) * dist;
+        var sz = (i < 8 ? 70 + Math.random() * 60 : 14 + Math.random() * 34);
+        f.style.setProperty('--sz', sz.toFixed(0) + 'px');
+        f.style.setProperty('--tx', tx.toFixed(0) + 'px');
+        f.style.setProperty('--ty', ty.toFixed(0) + 'px');
+        f.style.setProperty('--rot', (Math.random() * 540 - 270).toFixed(0) + 'deg');
+        f.style.setProperty('--col', COLORS[i % COLORS.length]);
+        f.style.setProperty('--d', (Math.random() * 0.12).toFixed(2) + 's');
+        stage.appendChild(f);
+      }
+
+      // Nach der Animation Overlay ausblenden und Seite freigeben
+      window.setTimeout(function () {
+        intro.classList.add('intro--out');
+        document.body.style.overflow = prevOverflow;
+        window.setTimeout(function () {
+          intro.parentNode && intro.parentNode.removeChild(intro);
+        }, 750);
+      }, 3000);
+    })();
+  </script>
+
+  <!-- ========================= HEADER ========================= -->
+  <header id="header" class="site-header fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-5 flex items-center justify-between">
+      <a href="#top" class="flex items-center" aria-label="Malerbetrieb Ralf Brinkmann — Startseite">
+        <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="site-logo" />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-bold text-ink">
+        <a href="#leistungen" class="navlink hover:text-ink transition-colors">Leistungen</a>
+        <a href="#unternehmen" class="navlink hover:text-ink transition-colors">Unternehmen</a>
+        <a href="#referenzen" class="navlink hover:text-ink transition-colors">Referenzen</a>
+        <a href="#partner" class="navlink hover:text-ink transition-colors">Partner</a>
+        <a href="#karriere" class="navlink hover:text-ink transition-colors">Karriere</a>
+        <a href="#kontakt" class="navlink hover:text-ink transition-colors">Kontakt</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen." target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 cursor-pointer rounded-full bg-sage px-3.5 sm:px-5 py-2.5 text-sm font-bold text-ink transition-all duration-200 hover:bg-sagedark active:scale-95"
+           title="Per WhatsApp anfragen · Antwort in 1–2 Std.">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
+          <span class="hidden sm:inline">WhatsApp</span>
+        </a>
+        <a href="#kontakt" class="hidden md:inline-flex cursor-pointer rounded-full border-2 border-ink/15 px-5 py-2 text-sm font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-white hover:border-ink">
+          Angebot anfordern
+        </a>
+        <button id="burger" aria-label="Menü öffnen" class="lg:hidden cursor-pointer rounded-lg p-2 text-ink hover:bg-sagesoft transition-colors">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="mobile-menu hidden-menu fixed inset-0 z-[60] bg-white lg:hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-line">
+      <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="h-11 w-auto" />
+      <button id="closeMenu" aria-label="Menü schließen" class="cursor-pointer rounded-lg p-2 hover:bg-sagesoft transition-colors">
+        <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-col px-6 py-8 gap-6 text-xl font-heading font-semibold text-ink">
+      <a href="#leistungen" class="mob-link">Leistungen</a>
+      <a href="#unternehmen" class="mob-link">Unternehmen</a>
+      <a href="#referenzen" class="mob-link">Referenzen</a>
+      <a href="#partner" class="mob-link">Partner</a>
+      <a href="#karriere" class="mob-link">Karriere</a>
+      <a href="#kontakt" class="mob-link">Kontakt</a>
+      <a href="https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen." target="_blank" rel="noopener" class="mob-link mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-sage px-6 py-3.5 text-center text-lg font-bold text-ink active:scale-95 transition">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
+        Per WhatsApp anfragen
+      </a>
+      <a href="#kontakt" class="mob-link inline-block rounded-full border-2 border-ink/15 px-6 py-3 text-center text-lg font-bold text-ink">Angebot per Formular</a>
+    </nav>
+  </div>
+
+  <!-- ========================= HERO ========================= -->
+  <section id="top" class="relative pt-40 lg:pt-52 pb-20 overflow-hidden">
+    <!-- soft sage blob -->
+    <div class="blob-anim pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-sage/30 blur-3xl"></div>
+    <div class="mx-auto max-w-7xl px-5 grid lg:grid-cols-2 gap-14 items-center relative">
+
+      <div class="reveal in">
+        <span class="inline-flex items-center gap-2 rounded-full bg-sagesoft px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-ink2">
+          <span class="h-2 w-2 rounded-full bg-sagedark"></span> Meisterhaftes Handwerk · seit 2014
+        </span>
+        <h1 class="font-heading mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] text-ink">
+          So bunt wie<br>das <span class="relative inline-block">Leben.
+            <svg class="absolute -bottom-2 left-0 w-full" height="14" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 50 2, 150 2, 198 8" stroke="#CAD18B" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+          </span>
+        </h1>
+        <p class="mt-7 max-w-lg text-lg leading-relaxed text-ink2">
+          Ihr Malerbetrieb in Saterland für Innen- &amp; Außenarbeiten, Fassaden,
+          Holz- &amp; Bautenschutz sowie kreative Farb- und Raumgestaltung —
+          sauber, zuverlässig und mit eigenen Ideen für Ihr Zuhause.
+        </p>
+        <div class="mt-9 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
+          <a href="https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 cursor-pointer rounded-full bg-sage px-7 py-4 text-base font-bold text-ink shadow-lg shadow-sage/40 transition-all duration-200 hover:bg-sagedark hover:-translate-y-0.5 active:scale-95">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
+            Jetzt per WhatsApp anfragen
+          </a>
+          <a href="#kontakt" class="inline-flex items-center justify-center cursor-pointer rounded-full border-2 border-ink/15 px-7 py-4 text-base font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-white hover:border-ink active:scale-95">
+            Angebot per Formular
+          </a>
+        </div>
+        <p class="mt-4 flex items-center gap-2 text-sm font-semibold text-ink2">
+          <span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sagedark opacity-60"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-sagedark"></span></span>
+          Schnelle Rückmeldung — meist Antwort in 1–2 Std.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-ink2">
+          <span class="flex items-center gap-2"><svg class="h-5 w-5 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Qualität &amp; Sauberkeit</span>
+          <span class="flex items-center gap-2"><svg class="h-5 w-5 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Beratung vor Ort</span>
+          <span class="flex items-center gap-2"><svg class="h-5 w-5 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Eigene Ideen &amp; Konzepte</span>
+        </div>
+      </div>
+
+      <div class="reveal in d1 relative">
+        <div class="floaty overflow-hidden rounded-[2rem] border border-line shadow-2xl shadow-ink/15 aspect-[4/5]">
+          <img src="assets/refs/ref1.jpg" alt="Referenzprojekt von Malerbetrieb Brinkmann — gestalteter Innenraum" class="h-full w-full object-cover" loading="eager" />
+        </div>
+        <div class="absolute -bottom-6 -left-4 sm:-left-6 rounded-2xl bg-white px-6 py-4 shadow-xl border border-line">
+          <div class="font-heading text-3xl font-extrabold text-ink leading-none"><span data-count="12">0</span><span class="text-sagedark">+</span></div>
+          <div class="mt-1 text-xs font-semibold uppercase tracking-wide text-ink2">Jahre Erfahrung</div>
+        </div>
+        <div class="absolute -top-4 -right-2 sm:-right-4 rotate-3 rounded-2xl bg-sage px-5 py-3 shadow-xl">
+          <div class="font-heading text-sm font-bold text-ink leading-tight">„Zeigen ist oft<br>besser als erklären."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= REELS / EINBLICKE ========================= -->
+  <section id="einblicke" class="py-20 sm:py-28 bg-ink text-white overflow-hidden">
+    <div class="mx-auto max-w-7xl px-5 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <div class="reveal order-2 lg:order-1">
+        <span class="text-sm font-bold uppercase tracking-widest text-sage">Einblicke</span>
+        <h2 class="font-heading mt-2 text-3xl sm:text-4xl font-bold">Sehen, wie aus Alt Neu wird</h2>
+        <p class="mt-5 text-lg leading-relaxed text-white/70">
+          Ein kurzer Blick auf unsere Arbeit: vom ersten Pinselstrich bis zum fertigen Raum.
+          Zeigen ist oft besser als erklären.
+        </p>
+        <ul class="mt-7 space-y-3 text-base text-white/80">
+          <li class="flex items-center gap-3"><svg class="h-5 w-5 text-sage shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Vorher / Nachher zum Staunen</li>
+          <li class="flex items-center gap-3"><svg class="h-5 w-5 text-sage shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Team bei der Arbeit — sauber &amp; präzise</li>
+          <li class="flex items-center gap-3"><svg class="h-5 w-5 text-sage shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Echte Projekte aus dem Saterland</li>
+        </ul>
+        <a href="https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen." target="_blank" rel="noopener" class="mt-9 inline-flex items-center justify-center gap-2.5 cursor-pointer rounded-full bg-sage px-7 py-3.5 text-base font-bold text-ink transition-all duration-200 hover:bg-sagedark active:scale-95">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
+          Mein Projekt anfragen
+        </a>
+      </div>
+
+      <!-- Vertical reel -->
+      <div class="reveal d1 order-1 lg:order-2 flex justify-center">
+        <div class="relative w-full max-w-[400px] aspect-[3/4] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/40 bg-black">
+          <!-- NACHHER (Basis-Ebene) -->
+          <img src="assets/refs/nachher.jpg" onerror="this.onerror=null;this.src='assets/refs/ref2.jpg'" alt="Nachher — frisch gestaltete Fassade" class="absolute inset-0 h-full w-full object-cover" />
+          <!-- VORHER (animierter Wisch darüber) -->
+          <div class="ba-before absolute inset-0">
+            <img src="assets/refs/vorher.jpg" onerror="this.onerror=null;this.src='assets/refs/ref1.jpg'" alt="Vorher — Fassade vor der Renovierung" class="h-full w-full object-cover" />
+          </div>
+          <!-- bewegliche Trennlinie -->
+          <div class="ba-divider"></div>
+          <!-- Labels Vorher / Nachher -->
+          <span class="absolute top-4 left-4 z-10 rounded-full bg-black/55 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Vorher</span>
+          <span class="absolute top-4 right-4 z-10 rounded-full bg-sage px-3 py-1 text-xs font-bold uppercase tracking-wide text-ink">Nachher</span>
+          <!-- dark gradient for legibility -->
+          <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
+          <!-- subtitle-style caption (für Ton-aus) -->
+          <div class="absolute inset-x-0 bottom-0 z-10 p-4 text-center">
+            <p class="inline-block rounded-lg bg-black/55 px-3 py-1.5 text-sm font-semibold leading-snug text-white">
+              „Aus Alt wird Neu — frische Fassade." 🎨
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= LEISTUNGEN ========================= -->
+  <section id="leistungen" class="py-20 sm:py-28 bg-sagesoft/60">
+    <div class="mx-auto max-w-7xl px-5">
+      <div class="reveal max-w-2xl">
+        <span class="text-sm font-bold uppercase tracking-widest text-sagedark">Leistungsübersicht</span>
+        <h2 class="font-heading mt-2 text-3xl sm:text-4xl font-bold text-ink">Alles aus einer Hand</h2>
+        <p class="mt-4 text-lg text-ink2">Drei Bereiche, ein Anspruch: sauberes, hochwertiges Handwerk. Klicken Sie auf ein <span class="font-semibold text-ink">+</span>, um mehr zu erfahren.</p>
+      </div>
+
+      <div class="mt-14 grid gap-6 lg:grid-cols-3">
+
+        <!-- INNEN -->
+        <div class="svc-card reveal rounded-3xl bg-white border border-line p-7 shadow-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sage/30 text-ink">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>
+            </span>
+            <h3 class="font-heading text-xl font-semibold text-ink">Innenbereiche</h3>
+          </div>
+          <div class="mt-5 divide-y divide-line acc-group">
+            <!-- item -->
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">WÄNDE</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Tapezieren, Streichen und kreative Wandgestaltung für jeden Raum.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">DEKORATIVES</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Spachteltechniken, Lasuren und besondere Effekte mit Charakter.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">TÜREN &amp; FUSSLEISTEN</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Saubere Lackierungen für langlebige, makellose Oberflächen.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">FÄRBEN &amp; NACHARBEITEN</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Präzise Farbtonanpassung und sorgfältige Ausbesserungen.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">MÖBEL &amp; EINBAUTEN</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Aufarbeitung und Neugestaltung von Möbeln und Einbauten.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUSSEN -->
+        <div class="svc-card reveal d1 rounded-3xl bg-white border border-line p-7 shadow-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sage/30 text-ink">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
+            </span>
+            <h3 class="font-heading text-xl font-semibold text-ink">Außenbereiche</h3>
+          </div>
+          <div class="mt-5 divide-y divide-line acc-group">
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">WÄNDE</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Fassadenanstriche, die schützen und Ihr Haus optisch aufwerten.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">DECKS &amp; TERRASSEN</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Pflege und Beschichtung von Holz im Außenbereich.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">ZÄUNE</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Anstrich und Schutz für lange Haltbarkeit und schöne Optik.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">HOLZ- &amp; BAUTENSCHUTZ</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Werterhalt durch fachgerechten Schutz von Holz und Bausubstanz.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">HOCHDRUCKREINIGEN</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Gründliche Reinigung von Flächen, Wegen und Fassaden.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DESIGN & BERATUNG -->
+        <div class="svc-card reveal d2 rounded-3xl bg-white border border-line p-7 shadow-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sage/30 text-ink">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.83-.44-1.12-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C22 6.01 17.5 2 12 2z"/></svg>
+            </span>
+            <h3 class="font-heading text-xl font-semibold text-ink">Design &amp; Beratung</h3>
+          </div>
+          <div class="mt-5 divide-y divide-line acc-group">
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">FARBMUSTER</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Wir finden gemeinsam den perfekten Farbton für Ihre Räume.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">MATERIALMUSTER</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Hochwertige Materialien zum Anfassen und Vergleichen.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">INNENRAUMGESTALTUNG</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Stimmige Konzepte für Räume, in denen man sich wohlfühlt.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">WOHN-GESUNDHEIT</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Schadstoffarme, gesunde Materialien für ein besseres Raumklima.</p></div>
+            </div>
+            <div class="acc-item py-1">
+              <button class="acc-trigger w-full flex items-center justify-between gap-3 py-3 text-left cursor-pointer">
+                <span class="font-heading text-sm font-semibold tracking-wide text-ink">VOR-ORT-BERATUNG</span>
+                <span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-sagesoft text-ink2 text-lg leading-none">+</span>
+              </button>
+              <div class="acc-panel"><p class="pb-3 text-sm text-ink2">Persönliche Beratung direkt bei Ihnen vor Ort.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="reveal mt-12 text-center">
+        <a href="#kontakt" class="group inline-flex items-center gap-3 cursor-pointer rounded-full bg-ink px-9 py-4 text-base font-bold uppercase tracking-wide text-white transition-all duration-200 hover:bg-sage hover:text-ink hover:-translate-y-0.5">
+          Unsere Leistungen entdecken
+          <svg class="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= UNTERNEHMEN ========================= -->
+  <section id="unternehmen" class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-5 grid lg:grid-cols-2 gap-14 items-center">
+      <div class="reveal relative">
+        <div class="overflow-hidden rounded-[2rem] border border-line shadow-2xl shadow-ink/10 aspect-[4/3]">
+          <img src="assets/refs/ref2.jpg" alt="Arbeit von Malerbetrieb Brinkmann" class="h-full w-full object-cover" loading="lazy" />
+        </div>
+        <span class="absolute -bottom-5 right-6 rounded-2xl bg-sage px-6 py-4 shadow-xl font-heading font-bold text-ink">seit 2014</span>
+      </div>
+
+      <div class="reveal d1">
+        <span class="text-sm font-bold uppercase tracking-widest text-sagedark">Das Unternehmen</span>
+        <h2 class="font-heading mt-2 text-3xl sm:text-4xl font-bold text-ink">Handwerk mit eigenen Ideen</h2>
+        <p class="mt-6 text-lg leading-relaxed text-ink2">
+          „Ich wollte vor allem eigene Ideen beim Kunden einbringen und umsetzen." — mit diesem Anspruch
+          gründete <strong class="text-ink">Ralf Brinkmann</strong> 2014 seinen Malerbetrieb in Saterland/Scharrel.
+          Beratung wird bei uns großgeschrieben: Wir stimmen Materialien und Farben sorgfältig auf Ihre Räume ab.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed text-ink2">
+          Vom Tapezieren über Lackier- und Bodenarbeiten bis zur kreativen Wandgestaltung betreuen wir
+          Privatkunden, Gewerbe und große Unternehmen — von der kleinen Wohnung bis zum historischen Hotel.
+        </p>
+
+        <div class="mt-8 grid sm:grid-cols-3 gap-5">
+          <div class="rounded-2xl bg-sagesoft p-5">
+            <svg class="h-7 w-7 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11-6 6v3h9l3-3"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg>
+            <h3 class="mt-3 font-heading font-semibold text-ink">Qualität &amp; Sauberkeit</h3>
+            <p class="mt-1 text-sm text-ink2">In jeder Phase der Arbeit.</p>
+          </div>
+          <div class="rounded-2xl bg-sagesoft p-5">
+            <svg class="h-7 w-7 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            <h3 class="mt-3 font-heading font-semibold text-ink">Kreativ-Team</h3>
+            <p class="mt-1 text-sm text-ink2">Ralf Brinkmann &amp; Team.</p>
+          </div>
+          <div class="rounded-2xl bg-sagesoft p-5">
+            <svg class="h-7 w-7 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h3 class="mt-3 font-heading font-semibold text-ink">Langfristig</h3>
+            <p class="mt-1 text-sm text-ink2">Zufriedenheit statt schneller Auftrag.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= REFERENZEN ========================= -->
+  <section id="referenzen" class="py-20 sm:py-28 bg-ink text-white">
+    <div class="mx-auto max-w-7xl px-5">
+      <div class="reveal text-center max-w-2xl mx-auto">
+        <span class="text-sm font-bold uppercase tracking-widest text-sage">Referenzen</span>
+        <h2 class="font-heading mt-2 text-3xl sm:text-4xl font-bold">Zeigen ist besser als erklären</h2>
+        <p class="mt-4 text-lg text-white/70">Ein Auszug aus unseren abgeschlossenen Projekten.</p>
+      </div>
+
+      <div id="gallery" class="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+        <!-- images injected/static -->
+        <button class="gal-item reveal group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref3.jpg"><img src="assets/refs/ref3.jpg" alt="Referenzprojekt 1" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+        <button class="gal-item reveal d1 group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref4.jpg"><img src="assets/refs/ref4.jpg" alt="Referenzprojekt 2" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+        <button class="gal-item reveal d2 group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref5.jpg"><img src="assets/refs/ref5.jpg" alt="Referenzprojekt 3" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+        <button class="gal-item reveal d3 group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref6.jpg"><img src="assets/refs/ref6.jpg" alt="Referenzprojekt 4" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+        <button class="gal-item reveal group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref7.jpg"><img src="assets/refs/ref7.jpg" alt="Referenzprojekt 5" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+        <button class="gal-item reveal d1 group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref8.jpg"><img src="assets/refs/ref8.jpg" alt="Referenzprojekt 6" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+        <button class="gal-item reveal d2 group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref9.jpg"><img src="assets/refs/ref9.jpg" alt="Referenzprojekt 7" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+        <button class="gal-item reveal d3 group relative overflow-hidden rounded-2xl aspect-square cursor-pointer" data-src="assets/refs/ref10.jpg"><img src="assets/refs/ref10.jpg" alt="Referenzprojekt 8" loading="lazy" class="h-full w-full object-cover"><span class="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[70] hidden items-center justify-center bg-ink/90 backdrop-blur-sm p-6 cursor-zoom-out">
+    <button id="lightboxClose" aria-label="Schließen" class="absolute top-5 right-5 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 transition-colors cursor-pointer"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img id="lightboxImg" src="" alt="Vergrößerte Referenz" class="max-h-[88vh] max-w-[92vw] rounded-xl shadow-2xl object-contain" />
+  </div>
+
+  <!-- ========================= GOOGLE-BEWERTUNGEN (kompakt) ========================= -->
+  <section id="bewertungen" class="py-14 sm:py-16 bg-sagesoft/40">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="reveal flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
+        <div class="flex items-center gap-3">
+          <svg viewBox="0 0 48 48" class="h-7 w-7" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+          <div class="leading-tight">
+            <p class="font-heading font-bold text-ink">Google-Bewertungen</p>
+            <p class="text-sm text-ink2 flex items-center gap-1.5"><span class="font-bold text-ink">5,0</span> <span class="flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span></p>
+          </div>
+        </div>
+        <span class="text-sm font-semibold text-ink2">Echte Stimmen unserer Kund:innen</span>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-3">
+        <!-- Bewertung 1 -->
+        <figure class="reveal rounded-2xl bg-white border border-line p-5 shadow-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sage font-heading font-bold text-ink">MF</span>
+            <div class="leading-tight">
+              <figcaption class="font-semibold text-ink text-sm">Monika &amp; Heinrich Fennen</figcaption>
+              <span class="text-xs text-ink2">vor 6 Monaten</span>
+            </div>
+          </div>
+          <div class="mt-3 flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <blockquote class="mt-3 text-sm leading-relaxed text-ink2">„Absolut begeistert! Von der Kontaktaufnahme bis zum Abschluss alles äußerst professionell und reibungslos. Die Tapezierarbeiten wurden mit unglaublicher Präzision und Liebe ausgeführt — uneingeschränkt zu empfehlen."</blockquote>
+        </figure>
+
+        <!-- Bewertung 2 -->
+        <figure class="reveal d1 rounded-2xl bg-white border border-line p-5 shadow-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sage font-heading font-bold text-ink">FK</span>
+            <div class="leading-tight">
+              <figcaption class="font-semibold text-ink text-sm">Frank Koeller</figcaption>
+              <span class="text-xs text-ink2">vor einem Jahr</span>
+            </div>
+          </div>
+          <div class="mt-3 flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <blockquote class="mt-3 text-sm leading-relaxed text-ink2">„Wie immer Note 1! Sehr gute und erfahrene Mitarbeiter. Gute Ideen, die sehr gut umgesetzt werden. Zuverlässig und spontan, wenn noch etwas anderes gemacht werden soll."</blockquote>
+        </figure>
+
+        <!-- Bewertung 3 -->
+        <figure class="reveal d2 rounded-2xl bg-white border border-line p-5 shadow-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sage font-heading font-bold text-ink">LB</span>
+            <div class="leading-tight">
+              <figcaption class="font-semibold text-ink text-sm">Larissa Boomkamp</figcaption>
+              <span class="text-xs text-ink2">vor 9 Monaten</span>
+            </div>
+          </div>
+          <div class="mt-3 flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <blockquote class="mt-3 text-sm leading-relaxed text-ink2">„Tolles Team, tolle Arbeit — zuverlässig, gründlich und sie verlassen alles sauber und ordentlich. Vergebe gerne 5 Sterne!"</blockquote>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= PARTNER ========================= -->
+  <section id="partner" class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-5">
+      <div class="reveal text-center max-w-2xl mx-auto">
+        <span class="text-sm font-bold uppercase tracking-widest text-sagedark">Marken &amp; Partner</span>
+        <h2 class="font-heading mt-2 text-3xl sm:text-4xl font-bold text-ink">Starke Leistung braucht starke Partner</h2>
+        <p class="mt-4 text-lg text-ink2">Qualität entsteht durch gute Mitarbeiter, beste Materialien und verlässliche Partner.</p>
+      </div>
+
+      <div class="mt-14 space-y-10">
+        <!-- Marken -->
+        <div class="reveal">
+          <h3 class="font-heading text-lg font-semibold text-ink mb-4">Marken</h3>
+          <div class="marquee">
+            <div class="marquee-track" data-marquee>
+              <span class="chip">ARDEX</span><span class="chip">AS-Creation</span><span class="chip">Caparol</span><span class="chip">Esprit</span><span class="chip">Forbo</span><span class="chip">Grandeco</span><span class="chip">NMC</span><span class="chip">Orac Decor</span><span class="chip">Pro-Ambiente</span><span class="chip">Rasch</span><span class="chip">Unland</span>
+            </div>
+          </div>
+        </div>
+        <!-- Lieferanten -->
+        <div class="reveal d1">
+          <h3 class="font-heading text-lg font-semibold text-ink mb-4">Lieferanten</h3>
+          <div class="marquee">
+            <div class="marquee-track rev" data-marquee>
+              <span class="chip">Brillux</span><span class="chip">Immken Baumarkt</span><span class="chip">Raiffeisen Ammerland-Ostfriesland</span><span class="chip">Weigel</span><span class="chip">Wilts</span><span class="chip">Wulff</span>
+            </div>
+          </div>
+        </div>
+        <!-- Partner -->
+        <div class="reveal d2">
+          <h3 class="font-heading text-lg font-semibold text-ink mb-4">Partner</h3>
+          <div class="marquee">
+            <div class="marquee-track" data-marquee>
+              <span class="chip">7things</span><span class="chip">Elektro-Technik Schmidt</span><span class="chip">Hinrichs Elektro- und Klimatechnik</span><span class="chip">Hotel Mündte am Stadtwald</span><span class="chip">Meyer und Preuth</span><span class="chip">Sanddornhaus Komfort-Ferienwohnungen</span><span class="chip">Schlangen Immobilien</span><span class="chip">Schulte Bauelemente Tischlerei CNC-Technik</span><span class="chip">Steenken</span><span class="chip">Theo Bischoff Bauunternehmung</span><span class="chip">W und H Bau</span><span class="chip">Will Tischlerei</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CTA-BAND ========================= -->
+  <section class="bg-sage">
+    <div class="mx-auto max-w-5xl px-5 py-14 sm:py-16 text-center">
+      <h2 class="reveal font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-ink">
+        Bereit für frische Farbe?
+      </h2>
+      <p class="reveal d1 mt-3 text-base sm:text-lg font-semibold text-ink/80">
+        Kostenloses, unverbindliches Angebot — meist Antwort in 1–2 Std.
+      </p>
+      <div class="reveal d2 mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
+        <a href="https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 cursor-pointer rounded-full bg-ink px-7 py-4 text-base font-bold text-white transition-all duration-200 hover:bg-ink2 active:scale-95">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
+          Per WhatsApp anfragen
+        </a>
+        <a href="tel:+491771707814" class="inline-flex items-center justify-center gap-2.5 cursor-pointer rounded-full border-2 border-ink/25 px-7 py-4 text-base font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-white hover:border-ink active:scale-95">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          0177 / 170 78 14
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= KONTAKT ========================= -->
+  <section id="kontakt" class="py-20 sm:py-28 bg-sagesoft/60">
+    <div class="mx-auto max-w-7xl px-5">
+      <div class="reveal text-center max-w-2xl mx-auto">
+        <span class="text-sm font-bold uppercase tracking-widest text-sagedark">Kontakt</span>
+        <h2 class="font-heading mt-2 text-3xl sm:text-4xl font-bold text-ink">Lassen Sie uns Ihr Projekt besprechen</h2>
+        <p class="mt-4 text-lg text-ink2">Kostenlose Beratung vor Ort — wir freuen uns auf Ihre Anfrage.</p>
+      </div>
+
+      <div class="mt-12 grid gap-8 lg:grid-cols-5">
+        <!-- Form -->
+        <form id="contactForm" novalidate class="reveal lg:col-span-3 rounded-3xl bg-white border border-line p-7 sm:p-9 shadow-sm">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="c-name" class="block text-sm font-semibold text-ink mb-1.5">Name *</label>
+              <input id="c-name" name="name" type="text" required class="field" placeholder="Ihr Name" />
+            </div>
+            <div>
+              <label for="c-phone" class="block text-sm font-semibold text-ink mb-1.5">Telefon</label>
+              <input id="c-phone" name="phone" type="tel" class="field" placeholder="Für Rückfragen" />
+            </div>
+          </div>
+          <div class="mt-5">
+            <label for="c-email" class="block text-sm font-semibold text-ink mb-1.5">E-Mail *</label>
+            <input id="c-email" name="email" type="email" required class="field" placeholder="name@email.de" />
+          </div>
+          <div class="mt-5">
+            <label for="c-subject" class="block text-sm font-semibold text-ink mb-1.5">Betreff</label>
+            <select id="c-subject" name="subject" class="field">
+              <option>Allgemeine Anfrage</option>
+              <option>Angebot — Innenarbeiten</option>
+              <option>Angebot — Außenarbeiten / Fassade</option>
+              <option>Farb- &amp; Raumberatung</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="mt-5">
+            <label for="c-message" class="block text-sm font-semibold text-ink mb-1.5">Ihre Nachricht *</label>
+            <textarea id="c-message" name="message" rows="4" required class="field" placeholder="Beschreiben Sie kurz Ihr Vorhaben…"></textarea>
+          </div>
+          <label class="mt-4 flex items-start gap-2.5 text-sm text-ink2">
+            <input type="checkbox" required class="mt-1 h-4 w-4 rounded border-line text-sage focus:ring-sage" />
+            Ich habe die Datenschutzhinweise gelesen und stimme der Verarbeitung meiner Daten zu. *
+          </label>
+          <button type="submit" class="mt-6 w-full sm:w-auto cursor-pointer rounded-full bg-sage px-8 py-3.5 font-bold text-ink transition-colors duration-200 hover:bg-sagedark">
+            Nachricht senden
+          </button>
+          <p id="contactSuccess" class="hidden mt-4 rounded-xl bg-sage/30 px-4 py-3 text-sm font-semibold text-ink">✓ Vielen Dank! Ihre Anfrage wurde vorbereitet — wir melden uns zeitnah.</p>
+        </form>
+
+        <!-- Info + map -->
+        <div class="reveal d1 lg:col-span-2 flex flex-col gap-6">
+          <div class="rounded-3xl bg-ink text-white p-7">
+            <h3 class="font-heading text-lg font-semibold">Direkt erreichbar</h3>
+            <div class="mt-5 space-y-4 text-sm">
+              <p class="flex gap-3"><svg class="h-5 w-5 shrink-0 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Zur Ziegelei 18<br>26683 Saterland / Scharrel</p>
+              <p class="flex gap-3"><svg class="h-5 w-5 shrink-0 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>Tel.: <a href="tel:+4904492708108" class="underline decoration-sage/50 hover:decoration-sage">04492 / 70 81 08</a><br>Mobil: <a href="tel:+491771707814" class="underline decoration-sage/50 hover:decoration-sage">0177 / 170 78 14</a></span></p>
+              <p class="flex gap-3"><svg class="h-5 w-5 shrink-0 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> <a href="mailto:info@maler-brinkmann.de" class="underline decoration-sage/50 hover:decoration-sage">info@maler-brinkmann.de</a></p>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="https://facebook.com/sobuntwiedasleben/" target="_blank" rel="noopener" aria-label="Facebook" class="cursor-pointer rounded-full bg-white/10 p-2.5 hover:bg-sage hover:text-ink transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+              <a href="https://instagram.com/malerbetriebbrinkmann/" target="_blank" rel="noopener" aria-label="Instagram" class="cursor-pointer rounded-full bg-white/10 p-2.5 hover:bg-sage hover:text-ink transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-3xl border border-line grow min-h-[220px]">
+            <iframe title="Standort Malerbetrieb Brinkmann — Zur Ziegelei 18, 26683 Saterland" src="https://www.google.com/maps?q=53.0745716,7.6913428&z=17&output=embed" class="h-full w-full" style="border:0;min-height:220px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= KARRIERE / BEWERBUNG ========================= -->
+  <section id="karriere" class="py-20 sm:py-28">
+    <div class="mx-auto max-w-5xl px-5">
+      <div class="reveal text-center max-w-2xl mx-auto">
+        <span class="text-sm font-bold uppercase tracking-widest text-sagedark">Karriere</span>
+        <h2 class="font-heading mt-2 text-3xl sm:text-4xl font-bold text-ink">Werde Teil des Kreativ-Teams</h2>
+        <p class="mt-4 text-lg text-ink2">Du bist Maler/in, Lackierer/in oder möchtest es werden? Bewirb dich direkt online — inkl. Upload deiner Unterlagen.</p>
+      </div>
+
+      <form id="jobForm" novalidate class="reveal mt-12 rounded-3xl bg-white border border-line p-7 sm:p-10 shadow-sm">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="j-name" class="block text-sm font-semibold text-ink mb-1.5">Vor- &amp; Nachname *</label>
+            <input id="j-name" name="name" type="text" required class="field" placeholder="Dein Name" />
+          </div>
+          <div>
+            <label for="j-position" class="block text-sm font-semibold text-ink mb-1.5">Position</label>
+            <select id="j-position" name="position" class="field">
+              <option>Maler/in &amp; Lackierer/in</option>
+              <option>Ausbildung / Azubi</option>
+              <option>Geselle/in</option>
+              <option>Praktikum</option>
+              <option>Initiativbewerbung</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5 mt-5">
+          <div>
+            <label for="j-email" class="block text-sm font-semibold text-ink mb-1.5">E-Mail *</label>
+            <input id="j-email" name="email" type="email" required class="field" placeholder="name@email.de" />
+          </div>
+          <div>
+            <label for="j-phone" class="block text-sm font-semibold text-ink mb-1.5">Telefon</label>
+            <input id="j-phone" name="phone" type="tel" class="field" placeholder="Optional" />
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="j-message" class="block text-sm font-semibold text-ink mb-1.5">Anschreiben</label>
+          <textarea id="j-message" name="message" rows="4" class="field" placeholder="Erzähl uns kurz etwas über dich…"></textarea>
+        </div>
+
+        <!-- Upload -->
+        <div class="mt-5">
+          <label class="block text-sm font-semibold text-ink mb-1.5">Lebenslauf / Unterlagen (PDF, JPG, PNG, DOCX)</label>
+          <label id="dropzone" for="j-file" class="flex flex-col items-center justify-center gap-2 cursor-pointer rounded-2xl border-2 border-dashed border-line bg-sagesoft/40 px-6 py-8 text-center transition-colors hover:border-sage hover:bg-sagesoft">
+            <svg class="h-9 w-9 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span id="fileLabel" class="text-sm font-semibold text-ink">Datei auswählen oder hierher ziehen</span>
+            <span class="text-xs text-ink2">max. 10 MB pro Datei</span>
+            <input id="j-file" name="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx,.doc" multiple class="sr-only" />
+          </label>
+        </div>
+
+        <label class="mt-5 flex items-start gap-2.5 text-sm text-ink2">
+          <input type="checkbox" required class="mt-1 h-4 w-4 rounded border-line text-sage focus:ring-sage" />
+          Ich bin mit der Speicherung meiner Bewerbungsdaten einverstanden. *
+        </label>
+        <button type="submit" class="mt-6 w-full sm:w-auto cursor-pointer rounded-full bg-ink px-8 py-3.5 font-bold text-white transition-colors duration-200 hover:bg-sage hover:text-ink">
+          Bewerbung absenden
+        </button>
+        <p id="jobSuccess" class="hidden mt-4 rounded-xl bg-sage/30 px-4 py-3 text-sm font-semibold text-ink">✓ Danke für deine Bewerbung! Wir melden uns bei dir.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="bg-ink text-white/70">
+    <div class="h-1.5 w-full bg-sage"></div>
+    <div class="mx-auto max-w-7xl px-5 py-14 grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+      <div class="sm:col-span-2 md:col-span-1">
+        <span class="font-heading text-xl font-bold text-white">Malerbetrieb<br>Ralf Brinkmann</span>
+        <p class="mt-3 text-sm">So bunt wie das Leben!<br>Ihr Maler in Saterland seit 2014.</p>
+      </div>
+      <div>
+        <h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-white">Leistungen</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#leistungen" class="hover:text-sage transition-colors">Innenbereiche</a></li>
+          <li><a href="#leistungen" class="hover:text-sage transition-colors">Außenbereiche</a></li>
+          <li><a href="#leistungen" class="hover:text-sage transition-colors">Design &amp; Beratung</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-white">Unternehmen</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#unternehmen" class="hover:text-sage transition-colors">Über uns</a></li>
+          <li><a href="#referenzen" class="hover:text-sage transition-colors">Referenzen</a></li>
+          <li><a href="#partner" class="hover:text-sage transition-colors">Partner</a></li>
+          <li><a href="#karriere" class="hover:text-sage transition-colors">Karriere</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-white">Kontakt</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>Zur Ziegelei 18, 26683 Saterland</li>
+          <li><a href="tel:+4904492708108" class="hover:text-sage transition-colors">04492 / 70 81 08</a></li>
+          <li><a href="mailto:info@maler-brinkmann.de" class="hover:text-sage transition-colors">info@maler-brinkmann.de</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mx-auto max-w-7xl px-5 pb-12">
+      <p class="text-center text-sm font-semibold uppercase tracking-widest text-white/50 mb-5">Folgen &amp; finden</p>
+      <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <a href="https://www.instagram.com/malerbetriebbrinkmann" target="_blank" rel="noopener" class="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full border border-white/25 px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-white hover:text-ink active:scale-95">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.google.com/maps/place/Malerbetrieb+Ralf+Brinkmann/@53.0745716,7.6913428,17z/data=!4m6!3m5!1s0x47b700c41fd1eda3:0x445cdd0135f82082!8m2!3d53.0745716!4d7.6913428" target="_blank" rel="noopener" class="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full border border-white/25 px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-white hover:text-ink active:scale-95">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+          Auf Google Maps
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=491771707814&amp;text=Hallo%2C+ich+m%C3%B6chte+ein+kostenloses+Angebot+von+Malerbetrieb+Brinkmann+anfragen.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener" class="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full border border-white/25 px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-white hover:text-ink active:scale-95">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="mx-auto max-w-7xl px-5 py-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs">
+      <p>© 2026 Malerbetrieb Ralf Brinkmann. Alle Rechte vorbehalten.</p>
+      <div class="flex gap-5"><a href="#" class="hover:text-sage transition-colors">Impressum</a><a href="#" class="hover:text-sage transition-colors">Datenschutz</a></div>
+    </div>
+  </footer>
+
+  <!-- ===== Sticky CTA (mobil) ===== -->
+  <div class="lg:hidden fixed inset-x-0 bottom-0 z-[75] flex border-t border-line bg-white/95 backdrop-blur shadow-[0_-8px_30px_rgba(45,49,46,.10)]">
+    <a href="https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen." target="_blank" rel="noopener" class="flex flex-1 items-center justify-center gap-2 bg-sage py-4 text-base font-bold text-ink active:scale-95 transition">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
+      WhatsApp
+    </a>
+    <a href="tel:+491771707814" class="flex flex-1 items-center justify-center gap-2 bg-ink py-4 text-base font-bold text-white active:scale-95 transition">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Anrufen
+    </a>
+  </div>
+
+  <!-- ========================= CHATBOT ========================= -->
+  <div class="fixed bottom-24 right-4 lg:bottom-5 lg:right-5 z-[80] flex flex-col items-end gap-3">
+    <!-- panel -->
+    <div id="chatPanel" class="chat-panel closed w-[clamp(280px,90vw,360px)] overflow-hidden rounded-2xl bg-white shadow-2xl border border-line">
+      <div class="flex items-center gap-3 bg-ink px-4 py-3 text-white">
+        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-sage text-ink font-heading font-bold">MB</span>
+        <div class="leading-tight">
+          <p class="font-heading text-sm font-semibold">Chat-Bot von Malerbetrieb Brinkmann</p>
+          <p class="text-[11px] text-white/60 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-sage"></span> Online · antwortet sofort</p>
+        </div>
+        <button id="chatClose" aria-label="Chat schließen" class="ml-auto cursor-pointer rounded-lg p-1.5 hover:bg-white/10 transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div id="chatBody" class="h-72 overflow-y-auto px-4 py-4 space-y-3 bg-sagesoft/30"></div>
+      <div id="chatQuick" class="flex flex-wrap gap-2 px-4 pb-2"></div>
+      <form id="chatForm" class="flex items-center gap-2 border-t border-line p-3">
+        <input id="chatInput" type="text" autocomplete="off" placeholder="Ihre Frage…" class="flex-1 rounded-full border border-line bg-white px-4 py-2.5 text-sm focus:border-sage focus:outline-none" />
+        <button type="submit" aria-label="Senden" class="cursor-pointer rounded-full bg-sage p-2.5 text-ink hover:bg-sagedark transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </form>
+    </div>
+    <!-- launcher -->
+    <button id="chatToggle" aria-label="Chat öffnen" class="relative cursor-pointer">
+      <span class="pulse-ring absolute inset-0 rounded-full bg-sage"></span>
+      <span class="relative flex h-[60px] w-[60px] items-center justify-center rounded-full bg-sage text-ink shadow-xl transition-transform hover:scale-105">
+        <svg id="chatIconOpen" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- chip + field styles -->
+  <style>
+    .chip { display:inline-block; border-radius:9999px; border:1px solid #E7E8DD; background:#F2F4E2; padding:.55rem 1.1rem; font-weight:600; font-size:.875rem; color:#2D312E; transition: all .2s ease; cursor:default; }
+    .chip:hover { background:#CAD18B; transform: translateY(-2px); box-shadow:0 6px 16px rgba(45,49,46,.12); }
+    .field { width:100%; border-radius:.85rem; border:1px solid #E7E8DD; background:#fff; padding:.7rem .9rem; font-size:.95rem; color:#2D312E; transition: border-color .2s ease, box-shadow .2s ease; }
+    .field:focus { outline:none; border-color:#CAD18B; box-shadow:0 0 0 3px rgba(202,209,139,.35); }
+    .field::placeholder { color:#9aa09a; }
+  </style>
+
+  <!-- ========================= SCRIPTS ========================= -->
+  <script>
+    // ---- Header scroll state ----
+    const header = document.getElementById('header');
+    const onScrollHeader = () => header.classList.toggle('scrolled', window.scrollY > 20);
+    window.addEventListener('scroll', onScrollHeader, { passive: true }); onScrollHeader();
+
+    // ---- Mobile menu ----
+    const mm = document.getElementById('mobileMenu');
+    const openMM = () => mm.classList.remove('hidden-menu');
+    const closeMM = () => mm.classList.add('hidden-menu');
+    document.getElementById('burger').addEventListener('click', openMM);
+    document.getElementById('closeMenu').addEventListener('click', closeMM);
+    document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', closeMM));
+
+    // ---- Scroll reveal ----
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ---- Reduzierte Bewegung respektieren ----
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ---- Laufband: Inhalte verdoppeln für nahtlose Schleife ----
+    document.querySelectorAll('[data-marquee]').forEach(track => {
+      [...track.children].forEach(node => {
+        const clone = node.cloneNode(true);
+        clone.classList.add('mq-dup');
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+    });
+
+    // ---- Count-up (z. B. „10+ Jahre“) ----
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, target = +el.dataset.count;
+        cio.unobserve(el);
+        if (reduceMotion) { el.textContent = target; return; }
+        const dur = 2600, start = performance.now();
+        const step = (now) => {
+          const p = Math.min((now - start) / dur, 1);
+          el.textContent = Math.round(p * target);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+    // ---- Active nav link on scroll ----
+    const sections = ['leistungen','unternehmen','referenzen','partner','karriere','kontakt'];
+    const navlinks = [...document.querySelectorAll('header .navlink')];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navlinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+
+    // ---- Accordion (Leistungen) ----
+    document.querySelectorAll('.acc-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acc-item');
+        const group = item.closest('.acc-group');
+        const wasOpen = item.classList.contains('open');
+        group.querySelectorAll('.acc-item.open').forEach(o => o.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // ---- Gallery lightbox ----
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const openLb = (src) => { lbImg.src = src; lb.classList.remove('hidden'); lb.classList.add('flex'); document.body.style.overflow = 'hidden'; };
+    const closeLb = () => { lb.classList.add('hidden'); lb.classList.remove('flex'); document.body.style.overflow = ''; };
+    document.querySelectorAll('.gal-item').forEach(b => b.addEventListener('click', () => openLb(b.dataset.src)));
+    document.getElementById('lightboxClose').addEventListener('click', closeLb);
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+    // ---- Forms (Frontend-Demo, kein Backend angebunden) ----
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+      document.getElementById('contactSuccess').classList.remove('hidden');
+      e.target.reset();
+    });
+    const jobForm = document.getElementById('jobForm');
+    const fileInput = document.getElementById('j-file');
+    const fileLabel = document.getElementById('fileLabel');
+    fileInput.addEventListener('change', () => {
+      fileLabel.textContent = fileInput.files.length
+        ? [...fileInput.files].map(f => f.name).join(', ')
+        : 'Datei auswählen oder hierher ziehen';
+    });
+    // drag & drop visual + assignment
+    const dz = document.getElementById('dropzone');
+    ['dragover','dragenter'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('border-sage','bg-sagesoft'); }));
+    ['dragleave','drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('border-sage','bg-sagesoft'); }));
+    dz.addEventListener('drop', e => { if (e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; fileInput.dispatchEvent(new Event('change')); } });
+    jobForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+      document.getElementById('jobSuccess').classList.remove('hidden');
+      e.target.reset(); fileLabel.textContent = 'Datei auswählen oder hierher ziehen';
+    });
+
+    // ---- Chatbot (regelbasiert, lokal — kann an echte KI/API angebunden werden) ----
+    const chatPanel = document.getElementById('chatPanel');
+    const chatBody = document.getElementById('chatBody');
+    const chatQuick = document.getElementById('chatQuick');
+    const chatToggle = document.getElementById('chatToggle');
+    let chatStarted = false;
+
+    const QUICK = ['Leistungen', 'Kostenloses Angebot', 'Telefonnummer', 'Bewerbung'];
+
+    // ---- Kontaktdaten zentral ----
+    const INFO = {
+      fest:     '04492 / 70 81 08',
+      festTel:  '+4904492708108',
+      mobil:    '0177 / 170 78 14',
+      mobilTel: '+491771707814',
+      mail:     'info@maler-brinkmann.de',
+      adresse:  'Zur Ziegelei 18, 26683 Saterland / Scharrel',
+      wa:       'https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen.'
+    };
+    const A = (href, label) => '<a href="' + href + '" class="font-semibold underline decoration-sage" target="_blank" rel="noopener">' + label + '</a>';
+    const telFest  = () => A('tel:' + INFO.festTel, INFO.fest);
+    const telMobil = () => A('tel:' + INFO.mobilTel, INFO.mobil);
+    const waLink   = (label) => A(INFO.wa, label || 'WhatsApp schreiben');
+    const mailLink = () => A('mailto:' + INFO.mail, INFO.mail);
+    // beide Nummern – wird überall genutzt, wo nach „Nummer“ gefragt wird
+    const numbers  = () => '☎ Festnetz: ' + telFest() + '<br>📱 Mobil / WhatsApp: ' + telMobil();
+
+    function addMsg(text, who) {
+      const wrap = document.createElement('div');
+      wrap.className = who === 'bot' ? 'flex justify-start' : 'flex justify-end';
+      wrap.innerHTML = '<div class="' + (who === 'bot'
+        ? 'bg-white text-ink border border-line'
+        : 'bg-sage text-ink') + ' max-w-[80%] rounded-2xl px-3.5 py-2 text-sm shadow-sm">' + text + '</div>';
+      chatBody.appendChild(wrap);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    function typing() {
+      const t = document.createElement('div');
+      t.className = 'flex justify-start'; t.id = 'typing';
+      t.innerHTML = '<div class="bg-white border border-line rounded-2xl px-4 py-3 flex gap-1"><span class="dot h-1.5 w-1.5 rounded-full bg-ink2"></span><span class="dot h-1.5 w-1.5 rounded-full bg-ink2"></span><span class="dot h-1.5 w-1.5 rounded-full bg-ink2"></span></div>';
+      chatBody.appendChild(t); chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    // Regeln werden der Reihe nach geprüft – spezifische zuerst.
+    const RULES = [
+      // --- WhatsApp gezielt ---
+      [/whats\s?app|wa\b|whatsap/, () =>
+        'Am schnellsten per WhatsApp 💬 — wir antworten meist in 1–2 Std.<br>📱 ' + telMobil() + '<br>' + waLink('➜ Jetzt WhatsApp-Chat öffnen')],
+
+      // --- Telefon / Nummer / Erreichbarkeit (immer BEIDE Nummern) ---
+      [/telefon|nummer|rufnummer|durchwahl|anrufe?n|telefonisch|handy|mobil|festnetz|erreich|kontaktdaten/, () =>
+        'So erreichen Sie uns direkt:<br>' + numbers() + '<br>✉ ' + mailLink() + '<br><br>📱 Lieber schreiben? ' + waLink('Per WhatsApp anfragen')],
+
+      // --- E-Mail ---
+      [/e-?mail|mail|schreiben|@/, () =>
+        'Per E-Mail erreichen Sie uns unter ✉ ' + mailLink() + '.<br>Oder direkt per WhatsApp: ' + waLink('Chat öffnen') + ' 📱'],
+
+      // --- Adresse / Standort / Einzugsgebiet ---
+      [/adresse|anschrift|standort|anfahrt|wo (seid|sind|finde|liegt|ist)|ziegelei|kommt ihr|kommen sie|umkreis|umgebung|einzugs|gebiet|region|saterland|scharrel|ostfriesland|cloppenburg|oldenburg|emsland/, () =>
+        '📍 Sie finden uns in der ' + INFO.adresse + '.<br>Wir arbeiten im gesamten <b>Saterland</b> und der Umgebung (Ammerland, Cloppenburg, Ostfriesland). Fragen Sie einfach an, ob Ihr Ort dabei ist! ' + waLink('Anfragen')],
+
+      // --- Termin / Öffnungszeiten / Verfügbarkeit ---
+      [/öffnung|geöffnet|sprechzeit|termin|wann.*(erreich|da|offen|zeit|könnt|kann)|verfügbar|wie schnell|kurzfristig|wann habt/, () =>
+        'Termine vereinbaren wir individuell und flexibel — auch kurzfristige Vor-Ort-Termine sind oft möglich. 📅<br>Rufen Sie uns an: ' + telFest() + ' / ' + telMobil() + ' oder ' + waLink('schreiben Sie per WhatsApp') + '.'],
+
+      // --- Preis / Kosten / Angebot ---
+      [/preis|kostet|kosten|teuer|günstig|angebot|kostenvoranschlag|kva|quadratmeter|\bqm\b|pauschal|stundenlohn|was zahl/, () =>
+        'Jedes Projekt ist anders — deshalb gibt es bei uns ein <b>kostenloses, unverbindliches Angebot</b> nach einer kurzen Besichtigung. 👍<br>Schildern Sie uns Ihr Vorhaben (Räume, Fläche, Innen/Außen):<br>📱 ' + waLink('Per WhatsApp anfragen') + '<br>📝 oder unten das <b>Kontaktformular</b> nutzen.'],
+
+      // --- Dauer ---
+      [/wie lange|dauer|dauert|zeitrahmen|fertig/, () =>
+        'Die Dauer hängt von Umfang und Trocknungszeiten ab — von einem Tag (einzelner Raum) bis zu mehreren Tagen (Fassade). Nach einem kurzen Blick vor Ort nennen wir Ihnen einen verlässlichen Zeitrahmen. ' + waLink('Termin anfragen')],
+
+      // --- Fassade / Außen ---
+      [/fassade|außen|aussen|haus.*(streich|anstrich)|wetter|verputz|wdvs|dämm/, () =>
+        '🏠 <b>Außen &amp; Fassade:</b> Fassadenanstriche, Holz- &amp; Bautenschutz, Terrassen, Zäune und Hochdruckreinigung — schützt Ihr Haus und wertet es optisch auf. ' + waLink('Angebot anfragen')],
+
+      // --- Boden ---
+      [/boden|fußboden|fussboden|laminat|vinyl|teppich|parkett|estrich/, () =>
+        '🧱 Boden­arbeiten gehören zu unserem Repertoire (Verlegen &amp; Vorbereiten). Erzählen Sie uns kurz, um welchen Boden es geht — ' + waLink('einfach anfragen') + '.'],
+
+      // --- Lackieren / Türen / Fenster / Holz ---
+      [/lack|türe?n|fenster|heizkörper|zarge|holzschutz|bautenschutz|holz/, () =>
+        '🚪 Saubere Lackier- und Holzarbeiten (Türen, Zargen, Fußleisten, Fenster, Holz- &amp; Bautenschutz) — für langlebige, makellose Oberflächen. ' + waLink('Anfragen')],
+
+      // --- Schimmel / Feuchtigkeit ---
+      [/schimmel|feucht|stockfleck|nässe|moder/, () =>
+        'Schimmel und Feuchteflecken schauen wir uns gern vor Ort an und beraten zu einer sauberen, gesunden Lösung. 🧪 Am besten kurz beschreiben: ' + waLink('Per WhatsApp melden')],
+
+      // --- Farbberatung / Design / Wohngesundheit (vor Innen, damit Farbfragen zuerst greifen) ---
+      [/farbberatung|beratung|farbton|farbe.*(welch|passt|wähl)|gestalt|design|wohngesund|raumklima|muster|schadstoff/, () =>
+        'Beratung wird bei uns großgeschrieben 💡 — wir bringen eigene Ideen ein und stimmen Farben &amp; Materialien (auch wohngesund/schadstoffarm) genau auf Ihre Räume ab. Gern auch eine Vor-Ort-Beratung: ' + waLink('Termin anfragen')],
+
+      // --- Innen / Wände / Tapezieren / Streichen ---
+      [/innen|wand|wände|tapez|streich|malen|anstrich|decke|zimmer|\braum\b|renovier|spachtel|lasur/, () =>
+        '🎨 <b>Innenbereiche:</b> Tapezieren, Streichen, Spachtel- &amp; Dekortechniken, Türen/Fußleisten und kreative Wandgestaltung. Sollen wir Ihnen ein Angebot machen? ' + waLink('Ja, anfragen')],
+
+      // --- Referenzen / Galerie ---
+      [/referenz|projekt|beispiel|portfolio|galerie|vorher|nachher|bilder|fotos|gesehen/, () =>
+        'Im Bereich <b>Referenzen</b> auf dieser Seite sehen Sie abgeschlossene Projekte — und im Reel oben unsere Arbeit in Bewegung. 📸 „Zeigen ist oft besser als erklären."'],
+
+      // --- Marken / Material ---
+      [/marke|material|caparol|brillux|hersteller|qualität.*material|welche farbe.*(nutz|verwend)/, () =>
+        'Wir arbeiten mit hochwertigen Marken wie <b>Caparol, Brillux, ARDEX, Rasch</b> u. v. m. — eine Übersicht finden Sie im Abschnitt <b>Marken &amp; Partner</b>.'],
+
+      // --- Bewerbung / Karriere ---
+      [/bewerb|job|arbeit(en)?( bei| sie| ihr)|stelle|karriere|azubi|ausbildung|praktik|geselle|mitarbeiter|einstellung|anstellung/, () =>
+        'Schön, dass Sie ins <b>Kreativ-Team</b> möchten! 🧑‍🎨 Im Bereich <b>Karriere</b> können Sie sich direkt online bewerben — inklusive Datei-Upload (PDF, JPG, PNG, DOCX).'],
+
+      // --- Über uns / Firma ---
+      [/über (euch|sie|uns)|wer (seid|sind)|firma|betrieb|seit wann|gegründet|\bralf\b|brinkmann|erfahrung|meister|geschichte/, () =>
+        'Der Malerbetrieb <b>Ralf Brinkmann</b> besteht seit <b>2014</b> in Saterland/Scharrel. Anspruch: Qualität, Sauberkeit und eigene Ideen — von der kleinen Wohnung bis zum historischen Hotel.'],
+
+      // --- Garantie / Versicherung ---
+      [/garantie|gewährleistung|versich|haftung|schaden/, () =>
+        'Als Fachbetrieb arbeiten wir mit gesetzlicher Gewährleistung und der nötigen Sorgfalt. Details zu Ihrem Projekt klären wir gern persönlich: ' + telFest() + ' oder ' + waLink('WhatsApp')],
+
+      // --- Bezahlung ---
+      [/zahl|rechnung|raten|bar\b|überweis|skonto|kasse/, () =>
+        'Die Abrechnung erfolgt unkompliziert per Rechnung nach Fertigstellung. Offene Fragen klären wir gern direkt: ' + telFest() + '.'],
+
+      // --- Leistungen allgemein ---
+      [/leistung|service|was (macht|bietet|könnt|kannst|anbiet)|womit|angebot.*(an|biete)|tätig/, () =>
+        'Wir bieten alles rund ums Malerhandwerk:<br>🎨 <b>Innen</b> – Tapezieren, Streichen, Dekor, Lackierungen<br>🏠 <b>Außen</b> – Fassade, Holz- &amp; Bautenschutz, Terrassen, Zäune<br>💡 <b>Design &amp; Beratung</b> – Farb- &amp; Materialberatung vor Ort<br>Worum geht es bei Ihnen?'],
+
+      // --- Bot-Identität ---
+      [/bist du (ein )?(roboter|bot|mensch|echt|ki|real|computer)|echter mensch|mit wem|wer bist/, () =>
+        'Ich bin der digitale <b>Chatbot von Malerbetrieb Brinkmann</b> 🤖 und helfe Ihnen rund um die Uhr weiter. Für persönliche Beratung verbinde ich Sie gern mit dem Team: ' + telFest() + ' oder ' + waLink('WhatsApp')],
+
+      // --- Begrüßung ---
+      [/^\s*(hallo|hi|hey|moin|servus|grüß|hallöchen|guten (tag|morgen|abend)|na\b)/, () =>
+        'Moin! 👋 Schön, dass Sie da sind. Ich helfe Ihnen zu <b>Leistungen, Angeboten, Kontakt &amp; Bewerbung</b>. Womit kann ich helfen?'],
+
+      // --- Dank ---
+      [/danke|super|klasse|top|perfekt|prima|spitze/, () =>
+        'Sehr gerne! 😊 Haben Sie noch eine Frage — oder soll ich Sie direkt zum Angebot weiterleiten? ' + waLink('Anfragen')],
+
+      // --- Verabschiedung ---
+      [/tschüss|ciao|wiederseh|bye|bis dann|schönen tag|gute nacht/, () =>
+        'Bis bald und vielen Dank für Ihr Interesse! 👋 Sie erreichen uns jederzeit unter ' + telMobil() + ' oder ' + waLink('WhatsApp') + '.'],
+
+      // --- Zustimmung (ja/gerne) ---
+      [/^\s*(ja|jap|jo|gerne|gern|okay|ok|passt|klar|mach|jup)/, () =>
+        'Super! 🙌 Am schnellsten geht es per WhatsApp — wir melden uns meist in 1–2 Std.:<br>' + waLink('➜ Jetzt anfragen') + '<br>Alternativ das Kontaktformular weiter unten ausfüllen.']
+    ];
+
+    function botReply(text) {
+      const t = text.toLowerCase().trim();
+      for (const [re, fn] of RULES) { if (re.test(t)) return fn(); }
+      // Fallback
+      return 'Da bin ich mir selber gerade nicht sicher, aber das beantwortet Ihnen unser Team am besten persönlich:<br>' + numbers() + '<br>✉ ' + mailLink() + '<br><br>Oder fragen Sie mich z. B. zu <b>Leistungen, Preisen, Terminen</b> oder <b>Bewerbung</b>. 🎨';
+    }
+    function respond(text) {
+      typing();
+      setTimeout(() => {
+        document.getElementById('typing')?.remove();
+        addMsg(botReply(text), 'bot');
+      }, 650);
+    }
+    function renderQuick() {
+      chatQuick.innerHTML = '';
+      QUICK.forEach(q => {
+        const b = document.createElement('button');
+        b.className = 'cursor-pointer rounded-full border border-sage bg-white px-3 py-1.5 text-xs font-semibold text-ink hover:bg-sage transition-colors';
+        b.textContent = q;
+        b.addEventListener('click', () => { addMsg(q, 'user'); respond(q); });
+        chatQuick.appendChild(b);
+      });
+    }
+    function startChat() {
+      if (chatStarted) return; chatStarted = true;
+      addMsg('Hallo und herzlich willkommen bei <b>Malerbetrieb Brinkmann</b>! 🎨 Ich bin Ihr persönlicher Chat-Bot von Malerbetrieb Brinkmann. Womit kann ich helfen?', 'bot');
+      renderQuick();
+    }
+    function toggleChat() {
+      const closed = chatPanel.classList.toggle('closed');
+      if (!closed) startChat();
+    }
+    chatToggle.addEventListener('click', toggleChat);
+    document.getElementById('chatClose').addEventListener('click', () => chatPanel.classList.add('closed'));
+    document.getElementById('chatForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const val = input.value.trim(); if (!val) return;
+      addMsg(val, 'user'); input.value = ''; respond(val);
+    });
+  </script>
+</body>
+</html>
