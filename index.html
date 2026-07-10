@@ -243,7 +243,8 @@
   <header id="header" class="site-header fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md">
     <div class="mx-auto max-w-7xl px-5 flex items-center justify-between">
       <a href="#top" class="flex items-center" aria-label="Malerbetrieb Ralf Brinkmann — Startseite">
-        <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="site-logo" />
+        <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="site-logo" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')" />
+        <span class="hidden font-heading text-xl sm:text-2xl font-bold text-ink leading-tight">Malerbetrieb<br class="sm:hidden"> Ralf Brinkmann</span>
       </a>
 
       <nav class="hidden lg:flex items-center gap-9 text-sm font-bold text-ink">
@@ -275,7 +276,7 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu hidden-menu fixed inset-0 z-[60] bg-white lg:hidden">
     <div class="flex items-center justify-between px-5 py-4 border-b border-line">
-      <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="h-11 w-auto" />
+      <span class="flex items-center"><img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="h-11 w-auto" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')" /><span class="hidden font-heading text-lg font-bold text-ink">Malerbetrieb Ralf Brinkmann</span></span>
       <button id="closeMenu" aria-label="Menü schließen" class="cursor-pointer rounded-lg p-2 hover:bg-sagesoft transition-colors">
         <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
