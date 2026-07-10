@@ -7,6 +7,17 @@
   <meta name="description" content="Malerbetrieb Ralf Brinkmann aus Saterland/Scharrel. Malerarbeiten innen & außen, Fassaden, Holz- & Bautenschutz, Farb- und Raumgestaltung. Qualität & Sauberkeit seit 2014." />
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Fallback: fehlt ein lokales Bild (z. B. bei unvollständigem Upload), wird es vom GitHub-CDN geladen
+    document.addEventListener('error', (e) => {
+      const el = e.target;
+      if (!(el instanceof HTMLImageElement) || el.dataset.cdn) return;
+      const src = el.getAttribute('src');
+      if (!src || /^(https?:|data:)/.test(src)) return;
+      el.dataset.cdn = '1';
+      el.src = 'https://cdn.jsdelivr.net/gh/mikabrinkmann12-star/Maler@965372ae46873b7c33e226440e05b8bb30f77d54/' + src.replace(/^\.?\//, '');
+    }, true);
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -243,7 +254,7 @@
   <header id="header" class="site-header fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md">
     <div class="mx-auto max-w-7xl px-5 flex items-center justify-between">
       <a href="#top" class="flex items-center" aria-label="Malerbetrieb Ralf Brinkmann — Startseite">
-        <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="site-logo" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')" />
+        <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="site-logo" onerror="this.dataset.n=(+this.dataset.n||0)+1;if(this.dataset.n>1){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')}" />
         <span class="hidden font-heading text-xl sm:text-2xl font-bold text-ink leading-tight">Malerbetrieb<br class="sm:hidden"> Ralf Brinkmann</span>
       </a>
 
@@ -252,8 +263,8 @@
         <a href="#unternehmen" class="navlink hover:text-ink transition-colors">Unternehmen</a>
         <a href="#referenzen" class="navlink hover:text-ink transition-colors">Referenzen</a>
         <a href="#partner" class="navlink hover:text-ink transition-colors">Partner</a>
-        <a href="#karriere" class="navlink hover:text-ink transition-colors">Karriere</a>
         <a href="#kontakt" class="navlink hover:text-ink transition-colors">Kontakt</a>
+        <a href="#karriere" class="navlink hover:text-ink transition-colors">Karriere</a>
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-3">
@@ -276,7 +287,7 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu hidden-menu fixed inset-0 z-[60] bg-white lg:hidden">
     <div class="flex items-center justify-between px-5 py-4 border-b border-line">
-      <span class="flex items-center"><img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="h-11 w-auto" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')" /><span class="hidden font-heading text-lg font-bold text-ink">Malerbetrieb Ralf Brinkmann</span></span>
+      <span class="flex items-center"><img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="h-11 w-auto" onerror="this.dataset.n=(+this.dataset.n||0)+1;if(this.dataset.n>1){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')}" /><span class="hidden font-heading text-lg font-bold text-ink">Malerbetrieb Ralf Brinkmann</span></span>
       <button id="closeMenu" aria-label="Menü schließen" class="cursor-pointer rounded-lg p-2 hover:bg-sagesoft transition-colors">
         <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -286,8 +297,8 @@
       <a href="#unternehmen" class="mob-link">Unternehmen</a>
       <a href="#referenzen" class="mob-link">Referenzen</a>
       <a href="#partner" class="mob-link">Partner</a>
-      <a href="#karriere" class="mob-link">Karriere</a>
       <a href="#kontakt" class="mob-link">Kontakt</a>
+      <a href="#karriere" class="mob-link">Karriere</a>
       <a href="https://wa.me/491771707814?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Angebot%20von%20Malerbetrieb%20Brinkmann%20anfragen." target="_blank" rel="noopener" class="mob-link mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-sage px-6 py-3.5 text-center text-lg font-bold text-ink active:scale-95 transition">
         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88M20.52 3.45A11.78 11.78 0 0012.05 0C5.46 0 .1 5.36.1 11.89c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.58 0 11.94-5.36 11.94-11.89 0-3.18-1.24-6.17-3.42-8.42z"/></svg>
         Per WhatsApp anfragen
@@ -377,24 +388,16 @@
       <div class="reveal d1 order-1 lg:order-2 flex justify-center">
         <div class="relative w-full max-w-[400px] aspect-[3/4] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/40 bg-black">
           <!-- NACHHER (Basis-Ebene) -->
-          <img src="assets/refs/nachher.jpg" onerror="this.onerror=null;this.src='assets/refs/ref2.jpg'" alt="Nachher — frisch gestaltete Fassade" class="absolute inset-0 h-full w-full object-cover" />
+          <img src="assets/refs/nachher.jpg" alt="Nachher — frisch gestaltete Fassade" class="absolute inset-0 h-full w-full object-cover" />
           <!-- VORHER (animierter Wisch darüber) -->
           <div class="ba-before absolute inset-0">
-            <img src="assets/refs/vorher.jpg" onerror="this.onerror=null;this.src='assets/refs/ref1.jpg'" alt="Vorher — Fassade vor der Renovierung" class="h-full w-full object-cover" />
+            <img src="assets/refs/vorher.jpg" alt="Vorher — Fassade vor der Renovierung" class="h-full w-full object-cover" />
           </div>
           <!-- bewegliche Trennlinie -->
           <div class="ba-divider"></div>
           <!-- Labels Vorher / Nachher -->
           <span class="absolute top-4 left-4 z-10 rounded-full bg-black/55 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Vorher</span>
           <span class="absolute top-4 right-4 z-10 rounded-full bg-sage px-3 py-1 text-xs font-bold uppercase tracking-wide text-ink">Nachher</span>
-          <!-- dark gradient for legibility -->
-          <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
-          <!-- subtitle-style caption (für Ton-aus) -->
-          <div class="absolute inset-x-0 bottom-0 z-10 p-4 text-center">
-            <p class="inline-block rounded-lg bg-black/55 px-3 py-1.5 text-sm font-semibold leading-snug text-white">
-              „Aus Alt wird Neu — frische Fassade." 🎨
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -638,60 +641,56 @@
   </div>
 
   <!-- ========================= GOOGLE-BEWERTUNGEN (kompakt) ========================= -->
-  <section id="bewertungen" class="py-14 sm:py-16 bg-sagesoft/40">
+  <section id="bewertungen" class="py-14 sm:py-16 bg-sagesoft/40 overflow-hidden">
     <div class="mx-auto max-w-6xl px-5">
-      <div class="reveal flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
+      <div class="reveal flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div class="flex items-center gap-3">
           <svg viewBox="0 0 48 48" class="h-7 w-7" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
           <div class="leading-tight">
             <p class="font-heading font-bold text-ink">Google-Bewertungen</p>
-            <p class="text-sm text-ink2 flex items-center gap-1.5"><span class="font-bold text-ink">5,0</span> <span class="flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span></p>
+            <p class="text-sm text-ink2 flex items-center gap-1.5"><span class="font-bold text-ink">5,0</span> <span class="rev-stars flex text-[#F4B400]"></span></p>
           </div>
         </div>
-        <span class="text-sm font-semibold text-ink2">Echte Stimmen unserer Kund:innen</span>
-      </div>
-
-      <div class="grid gap-5 sm:grid-cols-3">
-        <!-- Bewertung 1 -->
-        <figure class="reveal rounded-2xl bg-white border border-line p-5 shadow-sm">
-          <div class="flex items-center gap-3">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sage font-heading font-bold text-ink">MF</span>
-            <div class="leading-tight">
-              <figcaption class="font-semibold text-ink text-sm">Monika &amp; Heinrich Fennen</figcaption>
-              <span class="text-xs text-ink2">vor 6 Monaten</span>
-            </div>
-          </div>
-          <div class="mt-3 flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
-          <blockquote class="mt-3 text-sm leading-relaxed text-ink2">„Absolut begeistert! Von der Kontaktaufnahme bis zum Abschluss alles äußerst professionell und reibungslos. Die Tapezierarbeiten wurden mit unglaublicher Präzision und Liebe ausgeführt — uneingeschränkt zu empfehlen."</blockquote>
-        </figure>
-
-        <!-- Bewertung 2 -->
-        <figure class="reveal d1 rounded-2xl bg-white border border-line p-5 shadow-sm">
-          <div class="flex items-center gap-3">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sage font-heading font-bold text-ink">FK</span>
-            <div class="leading-tight">
-              <figcaption class="font-semibold text-ink text-sm">Frank Koeller</figcaption>
-              <span class="text-xs text-ink2">vor einem Jahr</span>
-            </div>
-          </div>
-          <div class="mt-3 flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
-          <blockquote class="mt-3 text-sm leading-relaxed text-ink2">„Wie immer Note 1! Sehr gute und erfahrene Mitarbeiter. Gute Ideen, die sehr gut umgesetzt werden. Zuverlässig und spontan, wenn noch etwas anderes gemacht werden soll."</blockquote>
-        </figure>
-
-        <!-- Bewertung 3 -->
-        <figure class="reveal d2 rounded-2xl bg-white border border-line p-5 shadow-sm">
-          <div class="flex items-center gap-3">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sage font-heading font-bold text-ink">LB</span>
-            <div class="leading-tight">
-              <figcaption class="font-semibold text-ink text-sm">Larissa Boomkamp</figcaption>
-              <span class="text-xs text-ink2">vor 9 Monaten</span>
-            </div>
-          </div>
-          <div class="mt-3 flex text-[#F4B400]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
-          <blockquote class="mt-3 text-sm leading-relaxed text-ink2">„Tolles Team, tolle Arbeit — zuverlässig, gründlich und sie verlassen alles sauber und ordentlich. Vergebe gerne 5 Sterne!"</blockquote>
-        </figure>
+        <a href="https://search.google.com/local/writereview?placeid=ChIJo-3RH8QAt0cRgiD4NQHdXEQ" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 cursor-pointer rounded-full bg-sage px-6 py-3 text-sm font-bold text-ink transition-all duration-200 hover:bg-sagedark active:scale-95">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          Jetzt auf Google bewerten
+        </a>
       </div>
     </div>
+
+    <div class="reveal marquee">
+      <div class="marquee-track items-stretch" data-marquee id="reviewTrack"></div>
+    </div>
+
+    <script>
+      (() => {
+        const reviews = [
+          ['Mira Framme', 'vor 3 Jahren', 'Wir sind begeistert von der kompetenten Erstberatung mit hilfreichen Tipps und Ideen, an die wir selber nicht gedacht h\u00e4tten, der z\u00fcgigen und sehr professionellen Arbeit und dem Gesamtergebnis in unserem Neubau! Danke :)'],
+          ['Sonja Schulz', 'vor 4 Jahren', 'Das Team von Ralf Brinkmann ist unschlagbar! Sehr sauber gearbeitet, p\u00fcnktlich, sehr angenehm im Umgang, immer wieder gerne!'],
+          ['Gero Boos', 'vor 7 Jahren', 'Super kompetente Mitarbeiter. Gute Arbeit zum fairen Preis abgeliefert. Besten Dank!'],
+          ['DJ.', 'vor 2 Jahren', 'Dank euch haben wir nun ein wundersch\u00f6nes Zuhause \ud83c\udfe1 Super freundliche und flei\u00dfige Mitarbeitende.'],
+          ['Monika Fennen', 'vor 6 Monaten', 'Wir sind absolut begeistert von der Arbeit des Teams Ralf Brinkmann. Von der ersten Kontaktaufnahme bis zum Abschluss der Arbeiten verlief alles professionell und reibungslos.'],
+          ['Frank Koeller', 'vor einem Jahr', 'Wie immer Note 1! Sehr gute und erfahrene Mitarbeiter. Gute Ideen, die sehr gut umgesetzt werden. Zuverl\u00e4ssig und spontan, wenn noch etwas anderes gemacht werden soll.'],
+          ['Larissa Boomkamp', 'vor 9 Monaten', 'Tolles Team, tolle Arbeit \u2014 zuverl\u00e4ssig, gr\u00fcndlich und sie verlassen alles sauber und ordentlich. Vergebe gerne 5 Sterne!'],
+        ];
+        const star = '<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>';
+        document.querySelectorAll('.rev-stars').forEach(el => el.innerHTML = star.repeat(5));
+        const initials = (name) => name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+        const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+        document.getElementById('reviewTrack').innerHTML = reviews.map(([name, when, text]) => `
+          <figure class="w-[320px] sm:w-[370px] shrink-0 flex flex-col rounded-2xl bg-white border border-line p-5 shadow-sm">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage font-heading font-bold text-ink">${initials(name)}</span>
+              <div class="leading-tight">
+                <figcaption class="font-semibold text-ink text-sm">${esc(name)}</figcaption>
+                <span class="text-xs text-ink2">Rezension aus Google \u00b7 ${when}</span>
+              </div>
+            </div>
+            <div class="mt-3 flex text-[#F4B400]">${star.repeat(5)}</div>
+            <blockquote class="mt-3 text-sm leading-relaxed text-ink2">\u201e${esc(text)}\u201c</blockquote>
+          </figure>`).join('');
+      })();
+    </script>
   </section>
 
   <!-- ========================= PARTNER ========================= -->
@@ -854,7 +853,6 @@
             <label for="j-position" class="block text-sm font-semibold text-ink mb-1.5">Position</label>
             <select id="j-position" name="position" class="field">
               <option>Maler/in &amp; Lackierer/in</option>
-              <option>Ausbildung / Azubi</option>
               <option>Geselle/in</option>
               <option>Praktikum</option>
               <option>Initiativbewerbung</option>
@@ -867,23 +865,23 @@
             <input id="j-email" name="email" type="email" required class="field" placeholder="name@email.de" />
           </div>
           <div>
-            <label for="j-phone" class="block text-sm font-semibold text-ink mb-1.5">Telefon</label>
-            <input id="j-phone" name="phone" type="tel" class="field" placeholder="Optional" />
+            <label for="j-phone" class="block text-sm font-semibold text-ink mb-1.5">Telefon *</label>
+            <input id="j-phone" name="phone" type="tel" required class="field" placeholder="Für Rückfragen" />
           </div>
         </div>
         <div class="mt-5">
-          <label for="j-message" class="block text-sm font-semibold text-ink mb-1.5">Anschreiben</label>
-          <textarea id="j-message" name="message" rows="4" class="field" placeholder="Erzähl uns kurz etwas über dich…"></textarea>
+          <label for="j-message" class="block text-sm font-semibold text-ink mb-1.5">Anschreiben *</label>
+          <textarea id="j-message" name="message" rows="4" required class="field" placeholder="Erzähl uns kurz etwas über dich…"></textarea>
         </div>
 
         <!-- Upload -->
         <div class="mt-5">
-          <label class="block text-sm font-semibold text-ink mb-1.5">Lebenslauf / Unterlagen (PDF, JPG, PNG, DOCX)</label>
+          <label class="block text-sm font-semibold text-ink mb-1.5">Lebenslauf / Unterlagen (PDF, JPG, PNG, DOCX) *</label>
           <label id="dropzone" for="j-file" class="flex flex-col items-center justify-center gap-2 cursor-pointer rounded-2xl border-2 border-dashed border-line bg-sagesoft/40 px-6 py-8 text-center transition-colors hover:border-sage hover:bg-sagesoft">
             <svg class="h-9 w-9 text-sagedark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             <span id="fileLabel" class="text-sm font-semibold text-ink">Datei auswählen oder hierher ziehen</span>
             <span class="text-xs text-ink2">max. 10 MB pro Datei</span>
-            <input id="j-file" name="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx,.doc" multiple class="sr-only" />
+            <input id="j-file" name="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx,.doc" multiple required class="sr-only" />
           </label>
         </div>
 
@@ -950,7 +948,7 @@
         </a>
       </div>
     </div>
-    <div class="mx-auto max-w-7xl px-5 py-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs">
+    <div class="mx-auto max-w-7xl px-5 pt-6 pb-24 lg:pb-8 lg:pr-32 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs">
       <p>© 2026 Malerbetrieb Ralf Brinkmann. Alle Rechte vorbehalten.</p>
       <div class="flex flex-wrap gap-5"><a href="impressum.html" class="hover:text-sage transition-colors">Impressum</a><a href="datenschutz.html" class="hover:text-sage transition-colors">Datenschutz</a><button id="cookieSettingsBtn" type="button" class="cursor-pointer hover:text-sage transition-colors">Cookie-Einstellungen</button></div>
     </div>
@@ -1020,11 +1018,17 @@
     document.getElementById('closeMenu').addEventListener('click', closeMM);
     document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', closeMM));
 
-    // ---- Scroll reveal ----
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // ---- Scroll reveal (übersprungen, wenn man von Impressum/Datenschutz zurückkommt) ----
+    let fromLegal = /impressum|datenschutz/.test(document.referrer);
+    try { fromLegal = fromLegal || sessionStorage.getItem('mb-from-legal') === '1'; sessionStorage.removeItem('mb-from-legal'); } catch (e) {}
+    if (fromLegal) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
 
     // ---- Reduzierte Bewegung respektieren ----
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

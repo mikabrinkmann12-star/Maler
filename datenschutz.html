@@ -8,6 +8,17 @@
   <meta name="robots" content="noindex, follow" />
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Fallback: fehlt ein lokales Bild (z. B. bei unvollständigem Upload), wird es vom GitHub-CDN geladen
+    document.addEventListener('error', (e) => {
+      const el = e.target;
+      if (!(el instanceof HTMLImageElement) || el.dataset.cdn) return;
+      const src = el.getAttribute('src');
+      if (!src || /^(https?:|data:)/.test(src)) return;
+      el.dataset.cdn = '1';
+      el.src = 'https://cdn.jsdelivr.net/gh/mikabrinkmann12-star/Maler@965372ae46873b7c33e226440e05b8bb30f77d54/' + src.replace(/^\.?\//, '');
+    }, true);
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -59,7 +70,7 @@
   <header id="header" class="site-header fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md">
     <div class="mx-auto max-w-7xl px-5 flex items-center justify-between">
       <a href="index.html" class="flex items-center" aria-label="Malerbetrieb Ralf Brinkmann — Startseite">
-        <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="site-logo" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')" />
+        <img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="site-logo" onerror="this.dataset.n=(+this.dataset.n||0)+1;if(this.dataset.n>1){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')}" />
         <span class="hidden font-heading text-xl sm:text-2xl font-bold text-ink leading-tight">Malerbetrieb<br class="sm:hidden"> Ralf Brinkmann</span>
       </a>
 
@@ -68,8 +79,8 @@
         <a href="index.html#unternehmen" class="navlink hover:text-ink transition-colors">Unternehmen</a>
         <a href="index.html#referenzen" class="navlink hover:text-ink transition-colors">Referenzen</a>
         <a href="index.html#partner" class="navlink hover:text-ink transition-colors">Partner</a>
-        <a href="index.html#karriere" class="navlink hover:text-ink transition-colors">Karriere</a>
         <a href="index.html#kontakt" class="navlink hover:text-ink transition-colors">Kontakt</a>
+        <a href="index.html#karriere" class="navlink hover:text-ink transition-colors">Karriere</a>
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-3">
@@ -86,7 +97,7 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu hidden-menu fixed inset-0 z-[60] bg-white lg:hidden">
     <div class="flex items-center justify-between px-5 py-4 border-b border-line">
-      <span class="flex items-center"><img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="h-11 w-auto" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')" /><span class="hidden font-heading text-lg font-bold text-ink">Malerbetrieb Ralf Brinkmann</span></span>
+      <span class="flex items-center"><img src="assets/logo/logo.gif" alt="Malerbetrieb Ralf Brinkmann Logo" class="h-11 w-auto" onerror="this.dataset.n=(+this.dataset.n||0)+1;if(this.dataset.n>1){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')}" /><span class="hidden font-heading text-lg font-bold text-ink">Malerbetrieb Ralf Brinkmann</span></span>
       <button id="closeMenu" aria-label="Menü schließen" class="cursor-pointer rounded-lg p-2 hover:bg-sagesoft transition-colors">
         <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -96,8 +107,8 @@
       <a href="index.html#leistungen" class="mob-link">Leistungen</a>
       <a href="index.html#unternehmen" class="mob-link">Unternehmen</a>
       <a href="index.html#referenzen" class="mob-link">Referenzen</a>
-      <a href="index.html#karriere" class="mob-link">Karriere</a>
       <a href="index.html#kontakt" class="mob-link">Kontakt</a>
+      <a href="index.html#karriere" class="mob-link">Karriere</a>
       <a href="impressum.html" class="mob-link">Impressum</a>
       <a href="datenschutz.html" class="mob-link">Datenschutz</a>
     </nav>
@@ -253,6 +264,7 @@
   <script>
     const header = document.getElementById('header');
     addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10), { passive: true });
+    try { sessionStorage.setItem('mb-from-legal', '1'); } catch (e) {}
     const menu = document.getElementById('mobileMenu');
     document.getElementById('burger').addEventListener('click', () => menu.classList.remove('hidden-menu'));
     document.getElementById('closeMenu').addEventListener('click', () => menu.classList.add('hidden-menu'));
